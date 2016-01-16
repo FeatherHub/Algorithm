@@ -66,4 +66,3 @@ void Vertex::SetColor(short color)
 
 	_color = color;
 }
-

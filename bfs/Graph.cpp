@@ -13,8 +13,19 @@ Vertex* Graph::GetStartVertex()
 
 void Graph::BreadthFirstSearch()
 {
+	for (Vertex* vertex : _vertices)
+	{
+		vertex->SetPredecessor(NULL);
+		vertex->SetColor(WHITE);
+		vertex->SetDistance(INT_MAX);
+	}
+
 	queue<Vertex*> reservedVertices;
 	reservedVertices.push(_startVertex);
+	
+	_startVertex->SetPredecessor(NULL);
+	_startVertex->SetColor(GRAY);
+	_startVertex->SetDistance(0);
 
 	while (!reservedVertices.empty())
 	{
@@ -32,8 +43,6 @@ void Graph::BreadthFirstSearch()
 				neighbor->SetPredecessor(curVisiting);
 			}
 		}
-
 		curVisiting->SetColor(BLACK);
 	}
 }
-
