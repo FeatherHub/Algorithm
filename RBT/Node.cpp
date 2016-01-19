@@ -1,4 +1,7 @@
+#ifndef _NODE_H_
+#define _NODE_H_
 #include "Node.h"
+#endif
 
 Node* Node::Create(int val, Node* leftChild, Node* rightChild)
 {
