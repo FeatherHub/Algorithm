@@ -1,0 +1,6 @@
+enum COLOR
+{
+	RED,
+	BLACK
+};
+
