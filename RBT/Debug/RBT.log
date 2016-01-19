@@ -1,0 +1,16 @@
+﻿Build started 2016-01-19 오후 9:18:11.
+     1>Project "C:\Users\jw\Desktop\jagual\RBT\RBT.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Node.cpp RBT.cpp main.cpp
+         main.cpp
+         RBT.cpp
+         Node.cpp
+         Generating Code...
+     1>c:\users\jw\desktop\jagual\rbt\rbt.cpp(35): error C4716: 'RBT::Search' : must return a value
+     1>c:\users\jw\desktop\jagual\rbt\rbt.cpp(30): error C4716: 'RBT::Delete' : must return a value
+     1>c:\users\jw\desktop\jagual\rbt\rbt.cpp(25): error C4716: 'RBT::Insert' : must return a value
+     1>Done Building Project "C:\Users\jw\Desktop\jagual\RBT\RBT.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.73
