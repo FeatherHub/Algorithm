@@ -1,3 +1,5 @@
+#include "Config.h"
+
 class Node
 {
 public:
@@ -13,8 +15,12 @@ public:
 	Node* GetRightChild() const { return _rightChild; }
 	void SetRightChild(Node* val) { _rightChild = val; }
 
+	COLOR GetColor() const { return _color; }
+	void SetColor(COLOR val);
+
 private:
 	int _val;
 	Node* _leftChild;
 	Node* _rightChild;
+	COLOR _color;
 };

@@ -15,3 +15,11 @@ Node::Node()
 	_leftChild = 0;
 	_rightChild = 0;
 }
+
+void Node::SetColor(COLOR val)
+{
+	if (val != BLACK || val != RED)
+		return;
+
+	_color = val;
+}
