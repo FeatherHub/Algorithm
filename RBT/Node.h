@@ -1,29 +1,32 @@
-#ifndef _CONFIG_H_
-#define _CONFIG_H_
+#pragma once
+
 #include "Config.h"
-#endif
 
 class Node
 {
 public:
-	static Node* Create(int val = 0, Node* leftChild = 0, Node* rightChild = 0);
+	static Node* Create(int val = NULL, Node* leftChild = NULL, Node* rightChild = NULL);
 	Node();
 
 	int GetVal() const { return _val; }
 	void SetVal(int val) { _val = val; }
 
-	Node* GetLeftChild() const { return _leftChild; }
-	void SetLeftChild(Node* val) { _leftChild = val; }
+	Node* GetLeft() const { return _left; }
+	void SetLeft(Node* val) { _left = val; }
 
-	Node* GetRightChild() const { return _rightChild; }
-	void SetRightChild(Node* val) { _rightChild = val; }
+	Node* GetRight() const { return _right; }
+	void SetRight(Node* val) { _right = val; }
+
+	Node* GetParent() const { return _parent; }
+	void SetParent(Node* val) { _parent = val; }
 
 	COLOR GetColor() const { return _color; }
 	void SetColor(COLOR val);
 
 private:
 	int _val;
-	Node* _leftChild;
-	Node* _rightChild;
+	Node* _left;
+	Node* _right;
+	Node* _parent;
 	COLOR _color;
 };
