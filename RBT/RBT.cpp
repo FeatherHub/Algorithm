@@ -47,6 +47,8 @@ void RBT::_PrintInOrder(Node* node)
 
 	_PrintInOrder(node->GetLeft());
 
+	if (node == _root)
+		cout << "Root-";
 	if (node->GetColor() == BLACK)
 		cout << "B";
 	else
@@ -365,24 +367,8 @@ Node* RBT::GetSuccessorOf(Node* node)
 {
 	Node* successor = node->GetRight();
 
-	if (successor != NIL) 
-	{
-		while (successor->GetLeft() != NIL)
-			successor = successor->GetLeft();
-	}
-	else 
-	{
-		successor = node->GetParent();
-
-		while (node != successor->GetRight())
-		{
-			node = successor;
-			successor = successor->GetParent();
-		}
-	
-		if (successor == _root)
-			successor = NIL;
-	}
+	while (successor->GetLeft() != NIL)
+		successor = successor->GetLeft();
 
 	return successor;
 }
