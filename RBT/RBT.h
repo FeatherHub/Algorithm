@@ -1,3 +1,5 @@
+#pragma once
+
 class Node;
 
 class RBT
@@ -8,17 +10,26 @@ public:
 
 	bool Insert(Node* toInsert);
 	bool Delete(Node* toDelete);
-	bool Search(Node* toSearch);
 
 	Node* GetRoot() const { return _root; }
 	void SetRoot(Node* val);
 
+	Node* NIL() const { return _NIL; }
+
+	void PrintInOrder();
+
 private:
-	void RightRotate(Node* toRR);
-	void LeftRotate(Node* toLR);
-	void FixInsertion(Node* toFix);
-	void FixDeletion(Node* toFix);
-	void Transplant(Node* toRemove, Node* toPlant);
+	bool FixInsertion(Node* toFix);
+	bool FixDeletion(Node* toFix);
+
+	bool RightRotate(Node* toRR);
+	bool LeftRotate(Node* toLR);
+
+	bool Transplant(Node* toRemove, Node* toPlant);
+	Node* GetSuccessorOf(Node* node);
+
+	void _PrintInOrder(Node* node);
 
 	Node* _root;
+	Node* _NIL;
 };
