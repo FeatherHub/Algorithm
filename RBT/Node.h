@@ -1,16 +1,17 @@
 #pragma once
 
 #include "Config.h"
+#include "RBT.h"
 
 class Node
 {
 public:
 	static Node* Create(
 		int val = 0, 
-		COLOR color = BLACK, 
-		Node* leftChild = NULL, 
-		Node* rightChild = NULL, 
-		Node* parent = NULL);
+		COLOR color = RED, 
+		Node* leftChild = RBT::NIL, 
+		Node* rightChild = RBT::NIL,
+		Node* parent = RBT::NIL);
 
 	Node();
 

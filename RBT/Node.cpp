@@ -14,11 +14,11 @@ Node* Node::Create(int val, COLOR color, Node* leftChild, Node* rightChild, Node
 
 Node::Node()
 {
-	_val = NULL;
-	_color = BLACK;
-	_left = NULL;
-	_right = NULL;
-	_parent = NULL;
+	_val = 0;
+	_color = RED;
+	_left = RBT::NIL;
+	_right = RBT::NIL;
+	_parent = RBT::NIL;
 }
 
 void Node::SetColor(COLOR val)
