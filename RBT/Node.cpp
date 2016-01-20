@@ -23,7 +23,7 @@ Node::Node()
 
 void Node::SetColor(COLOR val)
 {
-	if (val != BLACK || val != RED)
+	if (val != BLACK && val != RED)
 		return;
 
 	_color = val;
