@@ -5,7 +5,13 @@
 class Node
 {
 public:
-	static Node* Create(int val = NULL, Node* leftChild = NULL, Node* rightChild = NULL);
+	static Node* Create(
+		int val = 0, 
+		COLOR color = BLACK, 
+		Node* leftChild = NULL, 
+		Node* rightChild = NULL, 
+		Node* parent = NULL);
+
 	Node();
 
 	int GetVal() const { return _val; }
