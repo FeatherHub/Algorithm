@@ -14,9 +14,9 @@ public:
 	Node* GetRoot() const { return _root; }
 	void SetRoot(Node* val);
 
-	Node* NIL() const { return _NIL; }
-
 	void PrintInOrder();
+
+	static Node* NIL;
 
 private:
 	bool FixInsertion(Node* toFix);
@@ -31,5 +31,4 @@ private:
 	void _PrintInOrder(Node* node);
 
 	Node* _root;
-	Node* _NIL;
 };

@@ -3,6 +3,8 @@
 #include <iostream>
 using namespace  std;
 
+Node* RBT::NIL = new Node();
+
 RBT* RBT::Create(Node* root)
 {
 	if (!root)
@@ -11,12 +13,17 @@ RBT* RBT::Create(Node* root)
 	RBT* rbt = new RBT();
 	rbt->_root = root;
 
+	NIL->SetColor(BLACK);
+	NIL->SetLeft(NULL);
+	NIL->SetRight(NULL);
+	NIL->SetParent(NULL);
+
 	return rbt;
 }
 
 RBT::RBT()
 {
-	_root = 0;
+	_root = NULL;
 }
 
 void RBT::SetRoot(Node* root)
@@ -35,6 +42,9 @@ void RBT::PrintInOrder()
 
 void RBT::_PrintInOrder(Node* node)
 {
+	if (node == NIL)
+		return;
+
 	_PrintInOrder(node->GetLeft());
 
 	if (node->GetColor() == BLACK)
@@ -44,7 +54,7 @@ void RBT::_PrintInOrder(Node* node)
 
 	cout << node->GetVal() << " ";
 
-	_PrintInOrder(node->GetLeft());
+	_PrintInOrder(node->GetRight());
 }
 
 bool RBT::Insert(Node* toInsert)
@@ -52,10 +62,10 @@ bool RBT::Insert(Node* toInsert)
 	if (!toInsert)
 		return false;
 
-	Node* parent = _NIL;
+	Node* parent = NIL;
 	Node* curPos = _root;
 	
-	while (curPos != _NIL)
+	while (curPos != NIL)
 	{
 		parent = curPos;
 
@@ -64,20 +74,23 @@ bool RBT::Insert(Node* toInsert)
 		else
 			curPos = curPos->GetRight();
 	}
+
 	toInsert->SetParent(parent);
 
-	if (parent == _NIL)
+	if (parent == NIL)
 		_root = toInsert;
 	else if (toInsert->GetVal() < parent->GetVal())
 		parent->SetLeft(toInsert);
 	else
 		parent->SetRight(toInsert);
 
-	toInsert->SetLeft(_NIL);
-	toInsert->SetRight(_NIL);
+	toInsert->SetLeft(NIL);
+	toInsert->SetRight(NIL);
 	toInsert->SetColor(RED);
 
 	FixInsertion(toInsert);
+
+	return true;
 }
 
 bool RBT::FixInsertion(Node* toFix)
@@ -87,6 +100,9 @@ bool RBT::FixInsertion(Node* toFix)
 
 	while (toFix->GetParent()->GetColor() == RED)
 	{
+		if (toFix == NIL || toFix->GetParent() == NIL || toFix->GetParent()->GetParent() == NIL)
+			return true;
+
 		if (toFix->GetParent() == toFix->GetParent()->GetParent()->GetLeft())
 		{
 			Node* uncle = toFix->GetParent()->GetParent()->GetRight();
@@ -151,12 +167,12 @@ bool RBT::Delete(Node* toDelete)
 	COLOR deletedColor = toDelete->GetColor();
 	Node* toFix;
 
-	if (toDelete->GetLeft() == _NIL)
+	if (toDelete->GetLeft() == NIL)
 	{
 		toFix = toDelete->GetRight();
 		Transplant(toDelete, toDelete->GetRight());
 	}
-	else if (toDelete->GetRight() == _NIL)
+	else if (toDelete->GetRight() == NIL)
 	{
 		toFix = toDelete->GetLeft();
 		Transplant(toDelete, toDelete->GetLeft());
@@ -167,7 +183,7 @@ bool RBT::Delete(Node* toDelete)
 		deletedColor = successor->GetColor();
 		toFix = successor->GetRight();
 
-		if (successor->GetParent() == _NIL)
+		if (successor->GetParent() == NIL)
 			toFix->SetParent(successor);
 		else
 		{
@@ -283,16 +299,18 @@ bool RBT::RightRotate(Node* toRR)
 	
 	toRR->SetLeft(left->GetRight());
 
-	if (left->GetRight() != _NIL)
+	if (left->GetRight() != NIL)
 		left->GetRight()->SetParent(toRR);
 	
 	left->SetParent(toRR->GetParent());
 
-	if (toRR == toRR->GetParent()->GetLeft())
-		toRR->GetParent()->SetLeft(left);
-	else
+	if (toRR->GetParent() == NIL)
+		_root = left;
+	else if (toRR == toRR->GetParent()->GetRight())
 		toRR->GetParent()->SetRight(left);
-	
+	else
+		toRR->GetParent()->SetLeft(left);
+
 	left->SetRight(toRR);
 	toRR->SetParent(left);
 
@@ -308,15 +326,17 @@ bool RBT::LeftRotate(Node* toLR)
 
 	toLR->SetRight(right->GetLeft());
 
-	if (right->GetLeft() != _NIL)
+	if (right->GetLeft() != NIL)
 		right->GetLeft()->SetParent(toLR);
 
 	right->SetParent(toLR->GetParent());
 
-	if (toLR == toLR->GetParent()->GetRight())
-		toLR->GetParent()->SetRight(right);
-	else
+	if (toLR->GetParent() == NIL)
+		_root = right;
+	else if (toLR == toLR->GetParent()->GetLeft())
 		toLR->GetParent()->SetLeft(right);
+	else
+		toLR->GetParent()->SetRight(right);
 
 	right->SetLeft(toLR);
 	toLR->SetParent(right);
@@ -329,7 +349,7 @@ bool RBT::Transplant(Node* toRemove, Node* toPlant)
 	if (!toPlant || !toRemove)
 		return false;
 
-	if (toRemove->GetParent() == _NIL)
+	if (toRemove->GetParent() == NIL)
 		_root = toPlant;
 	else if (toRemove == toRemove->GetParent()->GetLeft())
 		toRemove->GetParent()->SetLeft(toPlant);
@@ -345,9 +365,9 @@ Node* RBT::GetSuccessorOf(Node* node)
 {
 	Node* successor = node->GetRight();
 
-	if (successor != _NIL) 
+	if (successor != NIL) 
 	{
-		while (successor->GetLeft() != _NIL)
+		while (successor->GetLeft() != NIL)
 			successor = successor->GetLeft();
 	}
 	else 
@@ -361,7 +381,7 @@ Node* RBT::GetSuccessorOf(Node* node)
 		}
 	
 		if (successor == _root)
-			successor = _NIL;
+			successor = NIL;
 	}
 
 	return successor;
