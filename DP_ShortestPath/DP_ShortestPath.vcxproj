@@ -146,12 +146,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ShortestPathProblem.cpp" />
+    <ClCompile Include="ShortestPathDAG.cpp" />
+    <ClCompile Include="ShortestPathDCG.cpp" />
     <ClCompile Include="TestMain.cpp" />
+    <ClCompile Include="Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Edge.h" />
-    <ClInclude Include="ShortestPathProblem.h" />
+    <ClInclude Include="ShortestPathDAG.h" />
+    <ClInclude Include="ShortestPathDCG.h" />
     <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

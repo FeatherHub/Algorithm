@@ -1,11 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="ShortestPathProblem.cpp">
-      <Filter>Algo</Filter>
-    </ClCompile>
     <ClCompile Include="TestMain.cpp">
       <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ShortestPathDAG.cpp">
+      <Filter>Algo</Filter>
+    </ClCompile>
+    <ClCompile Include="ShortestPathDCG.cpp">
+      <Filter>Algo</Filter>
+    </ClCompile>
+    <ClCompile Include="Vertex.cpp">
+      <Filter>Graph</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -15,7 +21,10 @@
     <ClInclude Include="Vertex.h">
       <Filter>Graph</Filter>
     </ClInclude>
-    <ClInclude Include="ShortestPathProblem.h">
+    <ClInclude Include="ShortestPathDAG.h">
+      <Filter>Algo</Filter>
+    </ClInclude>
+    <ClInclude Include="ShortestPathDCG.h">
       <Filter>Algo</Filter>
     </ClInclude>
   </ItemGroup>

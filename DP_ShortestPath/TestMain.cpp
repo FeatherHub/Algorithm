@@ -1,12 +1,25 @@
 #include <iostream>
 using namespace std;
 
-#include "ShortestPathProblem.h"
+#include "ShortestPathDAG.h"
+#include "ShortestPathDCG.h"
 #include "Vertex.h"
+
+void TestDAG();
+void TestDCG();
 
 int main()
 {
-	//강의자료의 그림 참고
+	TestDAG(); //Directed Acycle Graph
+	TestDCG(); //Directed Cycle Graph
+
+	return 0;
+}
+
+void TestDAG()
+{
+	//강의자료의 그림을 참고해서 구성했음
+
 	Vertex* s = new Vertex();
 	Vertex* r = new Vertex();
 	Vertex* t = new Vertex();
@@ -32,9 +45,44 @@ int main()
 	r->AddEdgeToMe(s, 3);
 	t->AddEdgeToMe(s, 2);
 
-	ShortestPathProblem sp;
-	int res = sp.TopDown(s, z);
-	cout << res << endl;
+	ShortestPathDAG sp;
+	int tdRes = sp.TopDown(s, z);
+	cout << tdRes << endl;
 
-	return 0;
+	int mmRes = sp.Memo(s, z);
+	cout << mmRes << endl;
+
+	int buRes = sp.BottomUp(s, z);
+	cout << buRes << endl;
+}
+
+void TestDCG()
+{
+	Vertex::ResetSerial();
+
+	//강의자료의 그림 참고해서 구성했음
+
+	Vertex* s = new Vertex();
+	Vertex* v1 = new Vertex();
+	Vertex* v2 = new Vertex();
+	Vertex* v3 = new Vertex();
+
+	s->AddEdgeToOther(v1, 1);
+	v1->AddEdgeToOther(v2, 1);
+	v1->AddEdgeToOther(v3, 1);
+	v2->AddEdgeToOther(v3, 1);
+	v3->AddEdgeToOther(v1, 1);
+	v3->AddEdgeToOther(s, 1);
+
+	s->AddEdgeToMe(v3, 1);
+	v1->AddEdgeToMe(s, 1);
+	v1->AddEdgeToMe(v3, 1);
+	v2->AddEdgeToMe(v1, 1);
+	v3->AddEdgeToMe(v1, 1);
+	v3->AddEdgeToMe(v2, 1);
+
+	ShortestPathDCG sp;
+	int tpRes = sp.TopDownMemod(s, v3, 4);
+	cout << tpRes << endl;
+
 }
