@@ -71,7 +71,77 @@ int ShortestPathDCG::_TopDownMemod(Vertex* s, Vertex* d, int** memo, int stepLen
 	return shortestPath;
 }
 
+//source로부터 각 vertex까지의 최단거리를 테이블을 이용해서 계산한다
 int ShortestPathDCG::BottomUp(Vertex* s, Vertex* d, int vertexNum)
 {
-	return 0;
+	//vertexNum * vertexNum 2차원 테이블 생성
+	Vertex*** table = new Vertex**[vertexNum];
+	for (int i = 0; i < vertexNum; i++)
+	{
+		table[i] = new Vertex*[vertexNum];
+	}
+
+	//테이블의 모든 원소를 nullptr로 초기화
+	for (int i = 0; i < vertexNum; i++)
+	{
+		for (int j = 0; j < vertexNum; j++)
+		{
+			table[i][j] = nullptr;
+		}
+	}
+
+	//Initialization
+	s->ShortestPathWeight(0);
+	table[s->Id()][0] = s;
+
+	for (int step = 0; step < vertexNum-1; step++)
+	{
+		for (int vertexId = 0; vertexId < vertexNum; vertexId++)
+		{
+			if (table[vertexId][step] != nullptr)
+			{
+				auto& curV = table[vertexId][step];
+
+				auto& edgeList = curV->EdgeToOtherList();
+				for (auto& e = edgeList.begin(); e != edgeList.end(); ++e)
+				{
+					auto neighborV = (*e)->TargetV();
+
+					int shortesPath = INT_MAX;
+					int oldRes = INT_MAX;
+
+					//이미 계산된 값이 있으면
+					if (table[neighborV->Id()][step + 1] != nullptr)
+					{
+						//비교하기 위해 가져온다
+						oldRes = table[neighborV->Id()][step + 1]->ShortestPathWeight();
+					}
+
+					int newRes = curV->ShortestPathWeight() + (*e)->Val();
+
+					shortesPath = min(oldRes, newRes);
+
+					//최단거리가 새로 갱신된 값이면 vertex의 값 변경
+					if (shortesPath == newRes)
+					{
+						neighborV->ShortestPathWeight(shortesPath);
+					}
+
+					table[neighborV->Id()][step + 1] = neighborV;
+				}
+			}
+		}
+	}
+
+	int shortest = INT_MAX;
+	for (int step = 0; step < vertexNum; step++)
+	{
+		if (table[d->Id()][step] != nullptr)
+		{
+			int tmp = (table[d->Id()][step])->ShortestPathWeight();
+			shortest = min(tmp, shortest);
+		}
+	}
+
+	return shortest;
 }

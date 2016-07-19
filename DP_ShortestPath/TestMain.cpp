@@ -85,4 +85,7 @@ void TestDCG()
 	int tpRes = sp.TopDownMemod(s, v3, 4);
 	cout << tpRes << endl;
 
+	int buRes = sp.BottomUp(s, v2, 4);
+	cout << buRes << endl;
+
 }
