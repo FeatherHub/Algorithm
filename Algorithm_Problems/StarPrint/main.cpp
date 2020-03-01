@@ -33,7 +33,7 @@ int main()
 		std::cout << strBuffer << std::endl;
 	}
 
-	// for문의 경우 range expression의 형식은
+	// 인덱스가++되는 for문의 경우 range expression은
 	// [ ) 혹은 [ ] 중에 하나이다
 	// 시작 부분이 [ 으로 고정되어 있다
 
