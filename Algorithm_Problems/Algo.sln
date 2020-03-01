@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StarPrint", "StarPrint\StarPrint.vcxproj", "{5E0592E9-F845-4EAE-9BE2-62F9F2910B4D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataHandling", "DataHandling\DataHandling.vcxproj", "{526C2C02-D08A-4A36-A87E-5239096438FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{5E0592E9-F845-4EAE-9BE2-62F9F2910B4D}.Release|x64.Build.0 = Release|x64
 		{5E0592E9-F845-4EAE-9BE2-62F9F2910B4D}.Release|x86.ActiveCfg = Release|Win32
 		{5E0592E9-F845-4EAE-9BE2-62F9F2910B4D}.Release|x86.Build.0 = Release|Win32
+		{526C2C02-D08A-4A36-A87E-5239096438FC}.Debug|x64.ActiveCfg = Debug|x64
+		{526C2C02-D08A-4A36-A87E-5239096438FC}.Debug|x64.Build.0 = Debug|x64
+		{526C2C02-D08A-4A36-A87E-5239096438FC}.Debug|x86.ActiveCfg = Debug|Win32
+		{526C2C02-D08A-4A36-A87E-5239096438FC}.Debug|x86.Build.0 = Debug|Win32
+		{526C2C02-D08A-4A36-A87E-5239096438FC}.Release|x64.ActiveCfg = Release|x64
+		{526C2C02-D08A-4A36-A87E-5239096438FC}.Release|x64.Build.0 = Release|x64
+		{526C2C02-D08A-4A36-A87E-5239096438FC}.Release|x86.ActiveCfg = Release|Win32
+		{526C2C02-D08A-4A36-A87E-5239096438FC}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

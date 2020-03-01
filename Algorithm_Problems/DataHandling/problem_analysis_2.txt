@@ -1,0 +1,53 @@
+/*
+문제 분석
+
+2. 주어진 요소들 중 특정 성질을 지닌 것을 추출한다
+
+예
+요소 개수: 4
+요소들: 2 5 3 3
+추출할 특성: 홀수임
+추출된 요소: 3 3
+
+이를 추상적으로 표현하면 다음과 같다
+
+요소 개수: N
+요소들: element 1, element 2,... element N
+추출할 특성: property p
+추출된 요소: extracted 1, extracted 2...
+
+어떤 요소 e가 특성 p를 가지고 있는지 알기 위해
+검사check를 적용해야 한다
+
+예
+추출하고자 하는 특성이 <홀수임>이고 
+현재 검사 대상인 요소가 3인 경우
+요소 3이 특성 <홀수임>을 지녔는지 알기 위해서
+검사 <%2>를 요소 3에 적용한다.
+
+요소 3에 대한 검사 <%2>의 결과가 
+0이면 특성 <짝수임>을, 1이면 특성 <홀수임>을 지니는 것이다.
+여기서 목적은 어떤 요소가 특성 <홀수임>을 지녔는지 여부이므로
+특성 <짝수임>은 특성 <홀수가 아님>으로 해석한다.
+
+이처럼 검사 결과를 어떤 특성으로 해석하는 모듈을 
+해석 모듈로 부를 수 있다.
+검사 모듈과 해석 모듈을 통틀어 특성 인식 모듈이라고 부를 수 있다
+
+특성 인식 모듈(property identifying module) 
+= 검사 모듈 + 해석 모듈
+
+이상의 내용을 추상화하여 표현한 것은 다음과 같다
+
+검사 모듈 tester module 
+해석 모듈 interpreter module
+
+element -> tester module -> test result -> interpreter module -> has p or not has p 
+
+property identifying modeul(element)
+{
+	tester module(element) return test reuslt
+	interpreter module(test result) return has property 
+	return element has property
+}
+*/
