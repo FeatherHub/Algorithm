@@ -1,4 +1,5 @@
 #include "BubbleSort.h"
+#include "Utility.h"
 
 void BubbleSort(int* arr, int n)
 {
@@ -16,11 +17,4 @@ void BubbleSort(int* arr, int n)
 			}
 		}
 	}
-}
-
-void Swap(int* a, int* b)
-{
-	int tmp = *a;
-	*a = *b;
-	*b = tmp;
 }
