@@ -3,10 +3,14 @@
   <ItemGroup>
     <ClInclude Include="BubbleSort.h" />
     <ClInclude Include="SortTest.h" />
+    <ClInclude Include="SelectSort.h" />
+    <ClInclude Include="Utility.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BubbleSort.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SortTest.cpp" />
+    <ClCompile Include="SelectSort.cpp" />
+    <ClCompile Include="Utility.cpp" />
   </ItemGroup>
 </Project>
