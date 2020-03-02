@@ -27,15 +27,29 @@ void SortTest::PrintArray(const std::vector<int>& v)
 
 void SortTest::TestSet(void sorter(int*, int), const std::vector<int>& v)
 {
-	std::cout << "Before: ";
+	std::cout << "Before(" << IsSorted((int*)v.data(), v.size()) << "): ";
 	PrintArray(v);
 
 	//TODO: 시간 측정
+
 	sorter((int*)v.data(), v.size());
-	std::cout << "After: ";
+	std::cout << "After(" << IsSorted((int*)v.data(), v.size()) << "): ";
 	PrintArray(v);
 
 	system("pause");
+}
+
+bool SortTest::IsSorted(int* arr, int n)
+{
+	for (int i = 0; i < n-1; i++)
+	{
+		if (arr[i] > arr[i + 1])
+		{
+			return false;
+		}
+	}
+
+	return true;
 }
 
 void SortTest::TestAlgorithm(void sorter(int*, int), const char* algoName)
