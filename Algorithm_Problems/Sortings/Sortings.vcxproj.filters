@@ -5,6 +5,7 @@
     <ClInclude Include="SortTest.h" />
     <ClInclude Include="SelectSort.h" />
     <ClInclude Include="Utility.h" />
+    <ClInclude Include="InsertionSort.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BubbleSort.cpp" />
@@ -12,5 +13,6 @@
     <ClCompile Include="SortTest.cpp" />
     <ClCompile Include="SelectSort.cpp" />
     <ClCompile Include="Utility.cpp" />
+    <ClCompile Include="InsertionSort.cpp" />
   </ItemGroup>
 </Project>

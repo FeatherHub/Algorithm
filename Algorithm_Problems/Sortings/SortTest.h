@@ -18,7 +18,7 @@ private:
 	void PrintArray(const std::vector<int>& v);
 	void TestSet(void sorter(int*, int), const std::vector<int>& v);
 	bool IsSorted(int* arr, int n);
-
+	
 	std::vector<int> m_data_one;
 	std::vector<int> m_data_two;
 	std::vector<int> m_data_three;

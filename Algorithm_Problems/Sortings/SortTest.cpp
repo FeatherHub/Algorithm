@@ -4,11 +4,12 @@
 #include <algorithm>
 #include <iostream>
 #include <iomanip>
+#include <string>
 
 SortTest::SortTest()
 {
 	srand(time(NULL));
-
+	
 	ResetData();
 }
 
